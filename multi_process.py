@@ -7,9 +7,11 @@ import multiprocessing
 import Queue
 # from threading import Timer, Thread, Event
 import time
+import sys
 
 worker_num = 1
-
+if len(sys.argv) == 2:
+    worker_num = int(sys.argv[1])
 
 class worker_thread(Process):
     def __init__(self, q, num):

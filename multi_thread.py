@@ -1,6 +1,6 @@
 import re
 import os
-
+import sys
 
 
 from threading import Timer, Thread, Event
@@ -10,6 +10,10 @@ import Queue
 import time
 
 worker_num = 1
+if len(sys.argv) == 2:
+    worker_num = int(sys.argv[1])
+
+
 
 
 class worker_thread(Thread):
