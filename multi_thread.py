@@ -12,8 +12,65 @@ import time
 worker_num = 1
 if len(sys.argv) == 2:
     worker_num = int(sys.argv[1])
+def test():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+        # print "Noooooooooooooooo"
+def test0():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+        # print "Noooooooooooooooo"
+def test1():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test2():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test3():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test4():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test5():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test6():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test7():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test8():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test9():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
 
-
+worker_fun = [test0, test1, test2, test3, test4, test5, test6, test7, test8, test9]
 
 
 class worker_thread(Thread):
@@ -29,7 +86,7 @@ class worker_thread(Thread):
         while not self.stop_event.is_set():
             try:
                 f = q.get(False)
-                test()
+                worker_fun[int(f)]
             except Queue.Empty:
                 self.log("empty queue.")
                 break
@@ -83,7 +140,57 @@ def test():
         a += 1
         continue
         # print "Noooooooooooooooo"
-
+def test0():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+        # print "Noooooooooooooooo"
+def test1():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test2():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test3():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test4():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test5():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test6():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test7():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test8():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
+def test9():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
 
 
 if __name__ == '__main__':
