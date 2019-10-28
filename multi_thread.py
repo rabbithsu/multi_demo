@@ -23,11 +23,11 @@ class worker_thread(Process):
         q = self.q
         while not self.stop_event.is_set():
             try:
-                f = q.get(block=True, timeout=1)
+                f = q.get(False)
                 test()
             except Queue.Empty:
                 self.log("empty queue.")
-                continue
+                break
             self.log(f + " is done.")
             self.log("finish, " + str(q.qsize()))
             q.task_done()
@@ -55,13 +55,13 @@ def multi_start(d):
 
         worker_list.append(worker)
         # print "Worker " + str(i) + "is set!"
-    for i in worker_list:
-        i.start()
+
 
     result = []
     for i in range(0, 1000):
         working_q.put(str(i))
-
+    for i in worker_list:
+        i.start()
     print "end delivery list."
     working_q.join()
     for i in worker_list:
