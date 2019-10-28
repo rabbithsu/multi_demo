@@ -1,20 +1,19 @@
 import re
 import os
+# import threading
 
-
-
-from threading import Timer, Thread, Event
-
+from multiprocessing import Process, Queue, Event
+import multiprocessing
 import Queue
-
+# from threading import Timer, Thread, Event
 import time
 
 worker_num = 1
 
 
-class worker_thread(Thread):
+class worker_thread(Process):
     def __init__(self, q, num):
-        Thread.__init__(self)
+        Process.__init__(self)
         self.q = q
         self.num = num
         self.workload = 0
@@ -40,7 +39,7 @@ class worker_thread(Thread):
         self.log("thread join.")
         self.log("Finished task: " + str(self.workload))
         self.stop_event.set()
-        Thread.join(self, timeout)
+        Process.join(self, timeout)
 
     def log(self, message):
         print("Worker %d: %s" % (self.num, message))
@@ -49,8 +48,8 @@ class worker_thread(Thread):
 
 def multi_start(d):
     worker_list =[]
-    #manager = multiprocessing.Manager()
-    working_q = Queue.Queue()
+    manager = multiprocessing.Manager()
+    working_q = manager.Queue()
     for i in range(0, worker_num):
         worker = worker_thread(working_q, i)
 
