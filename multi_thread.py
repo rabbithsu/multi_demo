@@ -86,7 +86,7 @@ class worker_thread(Thread):
         while not self.stop_event.is_set():
             try:
                 f = q.get(False)
-                worker_fun[int(f)]
+                worker_fun[int(num)]
             except Queue.Empty:
                 self.log("empty queue.")
                 break
