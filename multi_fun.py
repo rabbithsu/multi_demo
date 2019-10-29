@@ -3,10 +3,7 @@ import time
 import sys
 import Queue
 
-<<<<<<< HEAD
-=======
-#test222
->>>>>>> 29dffa1715e3e2a601e61a69dbc188d7ad7c5947
+
 def job(num, q):
     print num
     while True:
