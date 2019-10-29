@@ -22,6 +22,7 @@ def test0():
     a = 0
     while (a < 100000):
         a += 1
+        print str(a)
         continue
         # print "Noooooooooooooooo"
 def test1():
@@ -86,7 +87,7 @@ class worker_thread(Thread):
         while not self.stop_event.is_set():
             try:
                 f = q.get(False)
-                worker_fun[int(num)]
+                worker_fun[int(self.num)]
             except Queue.Empty:
                 self.log("empty queue.")
                 break
