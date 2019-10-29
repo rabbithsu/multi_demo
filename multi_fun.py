@@ -3,7 +3,6 @@ import time
 import sys
 import Queue
 
-#test
 def job(num, q):
     print num
     while True:
