@@ -105,7 +105,7 @@ def multi_start(d):
     j = 1000 / int(worker_num)
     threads = []
     for i in range(worker_num):
-        threads.append(threading.Thread(target = job_list[i](), args = (i,working_q)))
+        threads.append(threading.Thread(target = job_list[i], args = (i,j)))
         threads[i].start()
 
 
