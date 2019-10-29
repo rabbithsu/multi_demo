@@ -135,65 +135,6 @@ def multi_start(d):
 
 
 
-def test():
-    a = 0
-    while (a < 100000):
-        a += 1
-        continue
-        # print "Noooooooooooooooo"
-def test0():
-    a = 0
-    while (a < 100000):
-        a += 1
-        continue
-        # print "Noooooooooooooooo"
-def test1():
-    a = 0
-    while (a < 100000):
-        a += 1
-        continue
-def test2():
-    a = 0
-    while (a < 100000):
-        a += 1
-        continue
-def test3():
-    a = 0
-    while (a < 100000):
-        a += 1
-        continue
-def test4():
-    a = 0
-    while (a < 100000):
-        a += 1
-        continue
-def test5():
-    a = 0
-    while (a < 100000):
-        a += 1
-        continue
-def test6():
-    a = 0
-    while (a < 100000):
-        a += 1
-        continue
-def test7():
-    a = 0
-    while (a < 100000):
-        a += 1
-        continue
-def test8():
-    a = 0
-    while (a < 100000):
-        a += 1
-        continue
-def test9():
-    a = 0
-    while (a < 100000):
-        a += 1
-        continue
-
-
 if __name__ == '__main__':
     start = time.time()
     multi_start(False)
