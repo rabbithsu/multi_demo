@@ -41,7 +41,6 @@ class worker_thread(Thread):
 
     def join(self, timeout=None):
         self.log("thread join.")
-        self.log("Finished task: " + str(self.workload))
         self.stop_event.set()
         Thread.join(self, timeout)
 

@@ -31,14 +31,14 @@ class worker_thread(Process):
             except Queue.Empty:
                 self.log("empty queue.")
                 break
-            self.log("finish, " + str(q.qsize()) + " remain.")
+            self.log("finish job" + str(f) + ", " + str(q.qsize()) + " remain.")
             q.task_done()
             self.workload += 1
+        self.log("Finished task: " + str(self.workload))
         self.log("thread end.")
 
     def join(self, timeout=None):
         self.log("thread join.")
-        self.log("Finished task: " + str(self.workload))
         self.stop_event.set()
         Process.join(self, timeout)
 
