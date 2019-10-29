@@ -20,7 +20,7 @@ def multi_start(d):
         threads[i].start()
 
 
-    for i in range(5):
+    for i in range(worker_num):
         threads[i].join()
 
     print("Done.")
