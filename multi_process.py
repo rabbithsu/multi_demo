@@ -1,17 +1,18 @@
-import re
-import os
-# import threading
-
 from multiprocessing import Process, Queue, Event
 import multiprocessing
 import Queue
-# from threading import Timer, Thread, Event
 import time
 import sys
 
 worker_num = 1
 if len(sys.argv) == 2:
     worker_num = int(sys.argv[1])
+
+def test():
+    a = 0
+    while (a < 100000):
+        a += 1
+        continue
 
 class worker_thread(Process):
     def __init__(self, q, num):
@@ -30,11 +31,9 @@ class worker_thread(Process):
             except Queue.Empty:
                 self.log("empty queue.")
                 break
-            self.log(f + " is done.")
-            self.log("finish, " + str(q.qsize()))
+            self.log("finish, " + str(q.qsize()) + " remain.")
             q.task_done()
             self.workload += 1
-            self.log("task done, " + str(q.qsize()))
         self.log("thread end.")
 
     def join(self, timeout=None):
@@ -54,9 +53,8 @@ def multi_start(d):
     working_q = manager.Queue()
     for i in range(0, worker_num):
         worker = worker_thread(working_q, i)
-
         worker_list.append(worker)
-        # print "Worker " + str(i) + "is set!"
+
 
 
     result = []
@@ -64,22 +62,16 @@ def multi_start(d):
         working_q.put(str(i))
     for i in worker_list:
         i.start()
-    print "end delivery list."
+
     working_q.join()
     for i in worker_list:
         i.join()
 
-    print result
-    print "lenth: " + str(len(result))
+    print "\nJobs all dones!"
 
 
 
-def test():
-    a = 0
-    while (a < 100000):
-        a += 1
-        continue
-        # print "Noooooooooooooooo"
+
 
 
 
