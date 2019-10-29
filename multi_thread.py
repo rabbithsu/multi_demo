@@ -36,6 +36,7 @@ class worker_thread(Thread):
             self.log("finish, " + str(q.qsize()) + " remain.")
             q.task_done()
             self.workload += 1
+        self.log("Finished task: " + str(self.workload))
         self.log("thread end.")
 
     def join(self, timeout=None):
