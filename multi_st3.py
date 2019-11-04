@@ -30,7 +30,7 @@ class worker_thread(Process):
         while not self.stop_event.is_set():
             try:
                 f = q.get(False)
-                download_sample(f, auth_token, destination_directory="samples", session=q.s)
+                download_sample(f, auth_token, destination_directory="samples", session=self.s)
             except Queue.Empty:
                 self.log("empty queue.")
                 break
