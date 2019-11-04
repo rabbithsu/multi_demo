@@ -22,7 +22,7 @@ class worker_thread(Process):
         self.q = q
         self.num = num
         self.workload = 0
-        self.s = requests.Session()
+        #self.s = requests.Session()
         self.stop_event = Event()
 
     def run(self):
@@ -30,7 +30,8 @@ class worker_thread(Process):
         while not self.stop_event.is_set():
             try:
                 f = q.get(False)
-                download_sample(f, auth_token, destination_directory="samples", session=self.s)
+                download_sample(f, auth_token, destination_directory="samples")
+                #download_sample(f, auth_token, destination_directory="samples", session=self.s)
             except Queue.Empty:
                 self.log("empty queue.")
                 break
@@ -84,6 +85,7 @@ def download_sample(key, auth_token, destination_directory=".", file_name=None, 
     :param server_ip: OPTIONAL: specify alternate IP for the server, used for server subnet
     :return: the path to the sample if successful, an exception on errors
     '''
+    print "test"
     #  If a requests.Session() object is not passed in, just do a normal requests.get
     if not session:
         session = requests
